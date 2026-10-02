@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Electromax</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <section class="section contact-section">
+        <div class="container">
+            <h1 class="section-title">Contacto</h1>
+            
+            <% if (success) { %>
+                <div class="success-message">
+                    <%= success %>
+                </div>
+            <% } %>
+
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2>Información de Contacto</h2>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h3>Dirección</h3>
+                                <p><a href="https://www.google.com/maps/@4.13977,-73.6269734,3a,75y,173.06h,79.44t/data=!3m7!1e1!3m5!1sokV3W1E2Fa7UWznBTsdrQw!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D10.560000000000002%26panoid%3DokV3W1E2Fa7UWznBTsdrQw%26yaw%3D173.06!7i16384!8i8192?entry=ttu&g_ep=EgoyMDI1MDYxMC4xIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">CL 23 24A 09 LC2 Barrio Catatumbo, Villavicencio, Meta</a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h3>Teléfono</h3>
+                                <p><a href="tel:<%= site.phone.replace(/\s/g, '') %>"><%= site.phone %></a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h3>WhatsApp</h3>
+                                <p><a href="<%= site.getWhatsAppUrl() %>" target="_blank" rel="noopener noreferrer"><%= site.whatsappDisplay %></a></p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h3>Horario de Atención</h3>
+                                <p>Lunes - Sábado: 8:00 AM - 6:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="contact-form-container">
+                    <h2>Envíanos un Mensaje</h2>
+                    <form action="/contacto" method="POST" class="contact-form">
+                        <% if (errors && errors.length > 0) { %>
+                            <div class="error-message">
+                                <ul>
+                                    <% errors.forEach(error => { %>
+                                        <li><%= error.msg %></li>
+                                    <% }); %>
+                                </ul>
+                            </div>
+                        <% } %>
+
+                        <div class="form-group">
+                            <label for="name">Nombre</label>
+                            <input type="text" id="name" name="name" value="<%= formData ? formData.name : '' %>" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Asunto</label>
+                            <input type="text" id="subject" name="subject" value="<%= formData ? formData.subject : '' %>" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" name="message" rows="5" required><%= formData ? formData.message : '' %></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html> 

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electromax - Soluciones Electrónicas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <section id="hero" class="hero-modern">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-badge"><i class="fas fa-bolt"></i> Villavicencio, Meta</span>
+            <h1>Bienvenido a <span class="text-accent">Electromax</span></h1>
+            <p class="hero-subtitle">Venta, reparación y soporte técnico de equipos electrónicos con más de 10 años de experiencia.</p>
+            <div class="hero-buttons">
+                <a href="/productos" class="btn btn-primary btn-lg"><i class="fas fa-store"></i> Ver Productos</a>
+                <a href="<%= site.getWhatsAppUrl() %>" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg"><i class="fab fa-whatsapp"></i> Escríbenos</a>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg viewBox="0 0 1440 80" preserveAspectRatio="none"><path d="M0,32 C360,80 720,0 1080,32 C1260,48 1380,56 1440,48 L1440,80 L0,80 Z" fill="#f4f7f6"/></svg>
+        </div>
+    </section>
+
+    <section class="stats-bar">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <strong>10+</strong>
+                <span>Años de experiencia</span>
+            </div>
+            <div class="stat-item">
+                <strong>500+</strong>
+                <span>Clientes satisfechos</span>
+            </div>
+            <div class="stat-item">
+                <strong>24h</strong>
+                <span>Respuesta rápida</span>
+            </div>
+            <div class="stat-item">
+                <strong>100%</strong>
+                <span>Garantía de servicio</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <span class="section-label">Quiénes somos</span>
+                <h2 class="section-title">Sobre Nosotros</h2>
+            </div>
+            <div class="about-content about-split">
+                <div class="about-text">
+                    <p>Electromax es una empresa líder en el sector de la electrónica, especializada en la venta y reparación de equipos electrónicos. Con más de 10 años de experiencia, nos hemos convertido en el referente de confianza para nuestros clientes.</p>
+                    <p>Nuestro compromiso es ofrecer productos de alta calidad y un servicio excepcional, respaldado por nuestro equipo de técnicos altamente capacitados.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-check-circle"></i> Técnicos certificados</li>
+                        <li><i class="fas fa-check-circle"></i> Repuestos originales</li>
+                        <li><i class="fas fa-check-circle"></i> Atención personalizada</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-frame">
+                        <img src="/images/default-product.svg" alt="Electromax - Soluciones electrónicas" class="rounded-image">
+                        <div class="about-badge"><i class="fas fa-star"></i> Calidad garantizada</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <div class="section-heading">
+                <span class="section-label">Lo que hacemos</span>
+                <h2 class="section-title">Nuestros Servicios</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-item service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Reparación de Equipos</h3>
+                    <p>Servicio técnico especializado para televisores y equipos electrónicos de todo tipo.</p>
+                </div>
+                <div class="service-item service-card">
+                    <div class="service-icon"><i class="fas fa-tv"></i></div>
+                    <h3>Venta de Productos</h3>
+                    <p>Amplio catálogo de productos electrónicos de las mejores marcas del mercado.</p>
+                </div>
+                <div class="service-item service-card">
+                    <div class="service-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Soporte Técnico</h3>
+                    <p>Asesoramiento profesional y soporte continuo antes y después de tu compra.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="featured-products" class="section">
+        <div class="container">
+            <div class="section-heading">
+                <span class="section-label">Catálogo</span>
+                <h2 class="section-title">Producto Destacado</h2>
+            </div>
+            <% if (featuredProducts && featuredProducts.length > 0) { %>
+                <div class="featured-carousel <%= featuredProducts.length === 1 ? 'single-slide' : '' %>">
+                    <% if (featuredProducts.length > 1) { %>
+                        <button class="carousel-control prev" type="button" aria-label="Anterior producto"><i class="fas fa-chevron-left"></i></button>
+                    <% } %>
+                    <div class="carousel-track">
+                        <% featuredProducts.forEach((product, index) => { %>
+                            <article class="carousel-slide <%= index === 0 ? 'active' : '' %>">
+                                <div class="carousel-image" style="background-image: url('<%= product.imageUrl %>');"></div>
+                                <div class="carousel-card">
+                                    <span class="product-brand-tag"><%= product.brand %></span>
+                                    <h3><%= product.name %></h3>
+                                    <p class="product-description"><%= product.description %></p>
+                                    <div class="product-card-footer">
+                                        <span class="product-price">$<%= product.price.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></span>
+                                        <a href="/productos/<%= product._id %>" class="btn btn-primary btn-sm">Ver Detalles</a>
+                                    </div>
+                                </div>
+                            </article>
+                        <% }); %>
+                    </div>
+                    <% if (featuredProducts.length > 1) { %>
+                        <button class="carousel-control next" type="button" aria-label="Siguiente producto"><i class="fas fa-chevron-right"></i></button>
+                    <% } %>
+                </div>
+            <% } else { %>
+                <div class="no-products">
+                    <p>No hay productos destacados en este momento.</p>
+                </div>
+            <% } %>
+            <div class="text-center section-cta">
+                <a href="/productos" class="btn btn-primary btn-lg">Ver Todos los Productos</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="section bg-light">
+        <div class="container">
+            <div class="section-heading">
+                <span class="section-label">Testimonios</span>
+                <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Excelente servicio y atención. Repararon mi televisor en tiempo récord."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MG</div>
+                        <div>
+                            <strong>María González</strong>
+                            <span>Cliente desde 2020</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Los mejores precios y la mejor calidad en productos electrónicos."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JP</div>
+                        <div>
+                            <strong>Juan Pérez</strong>
+                            <span>Cliente desde 2019</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <div class="container cta-banner-inner">
+            <div>
+                <h2>¿Necesitas reparar tu televisor o comprar un equipo?</h2>
+                <p>Contáctanos por WhatsApp y te atenderemos de inmediato.</p>
+            </div>
+            <a href="<%= site.getWhatsAppUrl('Hola Electromax, necesito ayuda con un equipo electrónico.') %>" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp btn-lg">
+                <i class="fab fa-whatsapp"></i> Chatear ahora
+            </a>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

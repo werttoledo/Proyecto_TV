@@ -1,0 +1,212 @@
+<%- contentFor('body') %>
+
+<div class="container-fluid p-0 mb-5">
+    <img src="/images/reparacion_principal.jpg" alt="Reparación de Televisores" class="img-fluid w-100">
+    <div class="text-center bg-dark text-white py-3">
+        <h2 class="display-5">REPARACIÓN DE TELEVISORES LED, SMART TV, LCD VILLAVICENCIO.</h2>
+    </div>
+</div>
+
+<!-- Estilos para la galería -->
+<style>
+    .gallery-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+        animation: fadeInUp 0.6s ease-out;
+    }
+    .gallery-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+    }
+    .gallery-img {
+        transition: transform 0.3s ease;
+        height: 200px;
+        object-fit: cover;
+    }
+    .gallery-card:hover .gallery-img {
+        transform: scale(1.05);
+    }
+    .modal-img {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+    }
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    .gallery-card:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-card:nth-child(2) { animation-delay: 0.2s; }
+    .gallery-card:nth-child(3) { animation-delay: 0.3s; }
+    .gallery-card:nth-child(4) { animation-delay: 0.4s; }
+</style>
+
+<!-- Nueva sección de galería -->
+<div class="container mb-5">
+    <h2 class="text-center mb-4">Nuestros Servicios</h2>
+    <div class="row g-4">
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="/imagenes/WhatsApp Image 2025-06-11 at 6.06.57 PM.jpeg" data-title="Reparación Profesional">
+                <img src="/imagenes/WhatsApp Image 2025-06-11 at 6.06.57 PM.jpeg" class="card-img-top gallery-img" alt="Servicio de reparación">
+                <div class="card-body">
+                    <h5 class="card-title">Reparación Profesional</h5>
+                    <p class="card-text">Servicio técnico especializado para todas las marcas de televisores.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="/imagenes/WhatsApp Image 2025-06-11 at 6.06.58 PM.jpeg" data-title="Diagnóstico Preciso">
+                <img src="/imagenes/WhatsApp Image 2025-06-11 at 6.06.58 PM.jpeg" class="card-img-top gallery-img" alt="Servicio técnico">
+                <div class="card-body">
+                    <h5 class="card-title">Diagnóstico Preciso</h5>
+                    <p class="card-text">Evaluación detallada de su equipo con tecnología de última generación.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="/imagenes/WhatsApp Image 2025-06-11 at 6.06.58 PM (1).jpeg" data-title="Mantenimiento Preventivo">
+                <img src="/imagenes/WhatsApp Image 2025-06-11 at 6.06.58 PM (1).jpeg" class="card-img-top gallery-img" alt="Mantenimiento">
+                <div class="card-body">
+                    <h5 class="card-title">Mantenimiento Preventivo</h5>
+                    <p class="card-text">Cuidado y mantenimiento para prolongar la vida útil de su televisor.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-3">
+            <div class="card h-100 shadow-sm gallery-card" data-bs-toggle="modal" data-bs-target="#imageModal" data-img="/imagenes/WhatsApp Image 2025-06-11 at 6.06.58 PM (2).jpeg" data-title="Asesoría Técnica">
+                <img src="/imagenes/WhatsApp Image 2025-06-11 at 6.06.58 PM (2).jpeg" class="card-img-top gallery-img" alt="Asesoría técnica">
+                <div class="card-body">
+                    <h5 class="card-title">Asesoría Técnica</h5>
+                    <p class="card-text">Guía experta para la mejor solución a sus necesidades.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para ver imágenes en tamaño completo -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="" class="modal-img" alt="Imagen ampliada">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Script para el modal -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const imageModal = document.getElementById('imageModal');
+    const modalTitle = imageModal.querySelector('.modal-title');
+    const modalImg = imageModal.querySelector('.modal-img');
+    
+    imageModal.addEventListener('show.bs.modal', function(event) {
+        const button = event.relatedTarget;
+        const imgSrc = button.getAttribute('data-img');
+        const title = button.getAttribute('data-title');
+        
+        modalTitle.textContent = title;
+        modalImg.src = imgSrc;
+    });
+});
+</script>
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-lg-8">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <img src="/images/repair_grid1.jpg" alt="Televisor en reparación" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <img src="/images/repair_grid2.jpg" alt="Pantalla OLED" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <img src="/images/repair_grid3.jpg" alt="Reparación de circuito" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-md-6 mb-4">
+                    <img src="/images/repair_grid4.jpg" alt="Tecnología Smart TV" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 d-flex align-items-center">
+            <div>
+                <h3 class="mb-3">¡Confíe sus equipos en manos expertas!</h3>
+                <p>Solo aquí en SERVITEK reparamos televisores LED, SMART TV, LCD o PLASMA de todas la marcas con calidad garantizada. Además recogemos sus equipos a Domicilio sin costo adicional.</p>
+                <p>Contáctenos Ya!! Estamos ubicados en la Calle 23a # 20a-10 (500 metros abajo del colegio INEM, frente al parque el triangulo en villavicencio).</p>
+                <p>WhatsApp 311 2630577.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Productos Destacados -->
+    <section class="mb-5">
+        <h2 class="mb-4">Artículos Destacados</h2>
+        <div class="row">
+            <% if (productosDestacados && productosDestacados.length > 0) { %>
+                <% productosDestacados.forEach(producto => { %>
+                    <div class="col-md-3 mb-4">
+                        <div class="card h-100">
+                            <% if (producto.imagen_url) { %>
+                                <img src="<%= producto.imagen_url %>" class="card-img-top" alt="<%= producto.ARTICULOS.modelo %>">
+                            <% } else { %>
+                                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                                    <i class="fas fa-tv fa-3x text-muted"></i>
+                                </div>
+                            <% } %>
+                            <div class="card-body">
+                                <h5 class="card-title"><%= producto.ARTICULOS.MARCAS.nombre_marca %> <%= producto.ARTICULOS.modelo %></h5>
+                                <p class="card-text text-primary fw-bold">$<%= producto.precio.toLocaleString() %></p>
+                                <a href="/ventas/<%= producto.id_venta %>" class="btn btn-primary">Ver detalles</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="col-12">
+                    <p class="text-center">No hay artículos destacados disponibles.</p>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <!-- Comentarios Recientes -->
+    <section class="mb-5">
+        <h2 class="mb-4">Comentarios Recientes</h2>
+        <div class="row">
+            <% if (comentarios && comentarios.length > 0) { %>
+                <% comentarios.forEach(comentario => { %>
+                    <div class="col-md-4 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= comentario.nombre_cliente %></h5>
+                                <p class="card-text"><%= comentario.comentario %></p>
+                                <p class="card-text">
+                                    <small class="text-muted">
+                                        <%= new Date(comentario.fecha_comentario).toLocaleDateString() %>
+                                    </small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <div class="col-12">
+                    <p class="text-center">No hay comentarios recientes.</p>
+                </div>
+            <% } %>
+        </div>
+    </section>
+</div> 

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %> - Electromax</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <section class="section error-section">
+        <div class="container">
+            <div class="error-container">
+                <i class="fas fa-exclamation-circle error-icon"></i>
+                <h1><%= title %></h1>
+                <p><%= message %></p>
+                <a href="/" class="btn btn-primary">Volver al inicio</a>
+            </div>
+        </div>
+    </section>
+
+    <%- include('partials/footer') %>
+</body>
+</html> 

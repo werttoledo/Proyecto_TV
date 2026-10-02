@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= product.name %> - Electromax</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .product-detail-container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        .product-detail-image {
+            flex: 1;
+            min-width: 300px;
+        }
+        .product-detail-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .product-detail-info {
+            flex: 2;
+            min-width: 300px;
+        }
+        .product-detail-info h1 {
+            color: #007bff;
+            font-size: 2.2em;
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+        .product-detail-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        .product-detail-info .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+        .back-to-products {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .back-to-products:hover {
+            background-color: #5a6268;
+        }
+
+        @media (max-width: 768px) {
+            .product-detail-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <main>
+        <section class="product-detail-section">
+        <div class="product-detail-container">
+                <div class="product-image">
+                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                </div>
+                <div class="product-info">
+                    <h1><%= product.name %></h1>
+                    <div class="product-meta">
+                        <span class="product-brand"><i class="fas fa-tag"></i> <%= product.brand %></span>
+                        <span class="product-state"><i class="fas fa-check-circle"></i> <%= product.state %></span>
+                    </div>
+                    <p class="product-description"><%= product.description %></p>
+                    <div class="product-price">
+                        <span class="price">$<%= product.price.toLocaleString('es-ES', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) %></span>
+                    </div>
+                    <div class="product-actions">
+                        <a href="<%= site.getWhatsAppUrl('Hola, me interesa el producto: ' + product.name) %>" target="_blank" rel="noopener noreferrer" class="btn btn-whatsapp"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+                        <a href="/contacto" class="btn btn-primary">Contacto</a>
+                        <a href="/productos" class="btn btn-secondary">Volver a Productos</a>
+                    </div>
+                </div>
+        </div>
+        </section>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html> 

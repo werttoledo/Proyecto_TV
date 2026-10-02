@@ -1,0 +1,7 @@
+node_modules/
+.env
+sessions.db
+*.log
+.DS_Store
+public/images/*
+!public/images/default-product.svg
